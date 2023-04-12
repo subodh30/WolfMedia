@@ -94,7 +94,7 @@ public class MetadataService {
             List<Songs> result = new ArrayList<>();
             try {
                 while (data.next()) {
-                    result.add(new Songs(data.getString("songId"), data.getDouble("royaltyRate"), data.getString("title"), data.getString("royaltyStatus"), data.getInt("playCount"), data.getString("country"), data.getString("language"), data.getDouble("duration"), data.getString("primaryArtist"), data.getString("albumId")));
+                    result.add(new Songs(data.getString("songId"), data.getDouble("royaltyRate"), data.getString("title"), data.getString("royaltyStatus"), data.getInt("playCount"), data.getString("country"), data.getString("language"), data.getDouble("duration"), data.getInt("primaryArtist"), data.getInt("albumId")));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

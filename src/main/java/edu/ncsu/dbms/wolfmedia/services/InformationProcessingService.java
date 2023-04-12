@@ -218,7 +218,7 @@ public class InformationProcessingService {
     public List<PodcastHosts> getPodcastHosts(int id) {
         String query = "SELECT * FROM podcastHosts";
         if (id > 0) {
-            query += " WHERE podcastId = " + id;
+            query += " WHERE hostId = " + id;
         }
         ResultSet data = genericDAO.executeQuery(query);
         List<PodcastHosts> podcastHosts = new ArrayList<>();
@@ -236,7 +236,7 @@ public class InformationProcessingService {
 
     public void addPodcastHost(PodcastHosts podcastHost) {
         genericDAO.executeUpdate(
-                "INSERT INTO podcastHosts (podcastId, firstName, lastName, contact, email, city) "
+                "INSERT INTO podcastHosts (hostId, firstName, lastName, contact, email, city) "
                         +
                         "VALUES (" + podcastHost.getHostId() + ", '" + podcastHost.getFirstName() + "', '"
                         + podcastHost.getLastName() + "', '" + podcastHost.getContact() + "', '"
@@ -247,7 +247,7 @@ public class InformationProcessingService {
         genericDAO.executeUpdate(
                 "UPDATE podcastHosts SET firstName = '" + podcastHost.getFirstName() + "', lastName = '"
                         + podcastHost.getLastName() + "', contact = '" + podcastHost.getContact() + "', email = '"
-                        + podcastHost.getEmail() + "', city = '" + podcastHost.getCity() + "' WHERE podcastId = "
+                        + podcastHost.getEmail() + "', city = '" + podcastHost.getCity() + "' WHERE hostId = "
                         + podcastHost.getHostId());
     }
 
@@ -259,7 +259,7 @@ public class InformationProcessingService {
     public List<Episodes> getPodcastEpisodes(int i) {
         String query = "SELECT * FROM episodes";
         if (i > 0) {
-            query += " WHERE episodeId = " + i;
+            query += " WHERE podcastId = " + i;
         }
 
         ResultSet data = genericDAO.executeQuery(query);

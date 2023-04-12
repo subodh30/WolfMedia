@@ -162,8 +162,8 @@ public class InformationProcessingController {
     }
 
     @GetMapping("/podcastEpisodes/{id}")
-    public Episodes getPodcastEpisode(@PathVariable int id) {
-        return informationProcessingService.getPodcastEpisodes(id).get(0);
+    public List<Episodes> getPodcastEpisode(@PathVariable int id) {
+        return informationProcessingService.getPodcastEpisodes(id);
     }
 
     @PostMapping("/podcastEpisodes")

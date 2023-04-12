@@ -1,8 +1,12 @@
 package edu.ncsu.dbms.wolfmedia.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
+@JsonSerialize
 public class Podcasts {
 
     private int podcastId;
@@ -11,7 +15,7 @@ public class Podcasts {
     private String language;
     private int rating;
     private int episodeCount;
-    private int flatFee;
+    private double flatFee;
     private int totalSubscribers;
 
 }

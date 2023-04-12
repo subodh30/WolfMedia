@@ -25,7 +25,7 @@ public class InformationProcessingController {
         return informationProcessingService.getTableAttributes(table);
     }
 
-    //Songs
+    // Songs
     @GetMapping("/songs")
     public List<Songs> getSongs() {
         return informationProcessingService.getSongs(-1);
@@ -51,8 +51,7 @@ public class InformationProcessingController {
         informationProcessingService.deleteSong(id);
     }
 
-
-    //Albums
+    // Albums
     @GetMapping("/albums")
     public List<Albums> getAlbums() {
         return informationProcessingService.getAlbums(-1);
@@ -78,7 +77,7 @@ public class InformationProcessingController {
         informationProcessingService.deleteAlbum(id);
     }
 
-    //Artists
+    // Artists
     @GetMapping("/artists")
     public List<Artists> getArtists() {
         return informationProcessingService.getArtists(-1);
@@ -104,7 +103,7 @@ public class InformationProcessingController {
         informationProcessingService.deleteArtist(id);
     }
 
-    //PodcastHost
+    // PodcastHost
     @GetMapping("/podcastHosts")
     public List<PodcastHosts> getPodcastHosts() {
         return informationProcessingService.getPodcastHosts(-1);
@@ -130,7 +129,7 @@ public class InformationProcessingController {
         informationProcessingService.deletePodcastHost(id);
     }
 
-    //Podcast
+    // Podcast
     @GetMapping("/podcasts")
     public List<Podcasts> getPodcasts() {
         return informationProcessingService.getPodcasts(-1);
@@ -156,7 +155,7 @@ public class InformationProcessingController {
         informationProcessingService.deletePodcast(id);
     }
 
-    //PodcastEpisode
+    // PodcastEpisode
     @GetMapping("/podcastEpisodes")
     public List<Episodes> getPodcastEpisodes() {
         return informationProcessingService.getPodcastEpisodes(-1);
@@ -180,6 +179,38 @@ public class InformationProcessingController {
     @DeleteMapping("/podcastEpisodes/{podcastId}/{number}")
     public void deletePodcastEpisode(@PathVariable int podcastId, @PathVariable int number) {
         informationProcessingService.deletePodcastEpisode(podcastId, number);
+    }
+
+    // new
+
+    // ArtistToAlbum
+    @PostMapping("/artists/{artistId}/albums/{albumId}")
+    public void assignArtistToAlbum(@PathVariable int artistId, @PathVariable int albumId) {
+        informationProcessingService.assignArtistToAlbum(artistId, albumId);
+    }
+
+    // SongToAlbum
+    @PutMapping("/songs/{songId}/albums/{albumId}")
+    public void assignSongToAlbum(@PathVariable int songId, @PathVariable int albumId) {
+        informationProcessingService.assignSongToAlbum(songId, albumId);
+    }
+
+    // ArtistToRecordLabel
+    @PutMapping("/artists/{artistId}/recordLabels/{recordLabelId}")
+    public void assignArtistToRecordLabel(@PathVariable int artistId, @PathVariable int recordLabelId) {
+        informationProcessingService.assignArtistToRecordLabel(artistId, recordLabelId);
+    }
+
+    // EpisodeToPodcast
+    @PutMapping("/episodes/{episodeId}/podcasts/{podcastId}")
+    public void assignEpisodeToPodcast(@PathVariable int episodeId, @PathVariable int podcastId) {
+        informationProcessingService.assignEpisodeToPodcast(episodeId, podcastId);
+    }
+
+    // PodcastHostToPodcast
+    @PostMapping("/podcasts/{podcastId}/hosts/{hostId}")
+    public void assignPodcastHostToPodcast(@PathVariable int podcastId, @PathVariable int hostId) {
+        informationProcessingService.assignPodcastHostToPodcast(podcastId, hostId);
     }
 
 }

@@ -13,6 +13,6 @@ public class PodcastHistory {
     private int month;
     private int year;
     private int subscribers;
-    private int rating;
+    private double rating;
 
 }

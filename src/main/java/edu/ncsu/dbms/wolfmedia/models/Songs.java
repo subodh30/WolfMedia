@@ -17,6 +17,6 @@ public class Songs {
     private String country;
     private String language;
     private Double duration;
-    private String primaryArtist;
-    private String albumId;
+    private Integer primaryArtist;
+    private Integer albumId;
 }

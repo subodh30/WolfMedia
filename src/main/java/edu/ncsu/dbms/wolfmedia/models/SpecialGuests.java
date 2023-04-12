@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 @JsonSerialize
 public class SpecialGuests {
-    private int guestId;
+    private Integer guestId;
     private String name;
 }

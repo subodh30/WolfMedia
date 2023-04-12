@@ -51,7 +51,6 @@ public class InformationProcessingService {
         }
         ResultSet data = genericDAO.executeQuery(query);
         List<Songs> songs = new ArrayList<>();
-        System.out.println(data);
         try {
             while (data.next()) {
                    songs.add(new Songs(data.getString("songId"), data.getDouble("royaltyRate"), data.getString("title"), data.getString("royaltyStatus"), data.getInt("playCount"), data.getString("country"), data.getString("language"), data.getDouble("duration"), data.getString("primaryArtist"), data.getString("albumId")));

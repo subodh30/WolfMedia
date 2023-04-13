@@ -18,8 +18,8 @@ public class PaymentsController {
     }
 
     @GetMapping("/makeRoyaltyPayment")
-    public String makeRoyaltyPayment(@RequestParam Integer songId, @RequestParam int month) {
-        return paymentsService.makeRoyaltyPayment(songId, month);
+    public String makeRoyaltyPayment(@RequestParam Integer songId, @RequestParam int month, @RequestParam int year) {
+        return paymentsService.makeRoyaltyPayment(songId, month, year);
     }
 
     @GetMapping("/generateMonthlyRoyalties")

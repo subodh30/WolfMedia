@@ -23,15 +23,20 @@ public class PaymentsService {
     }
 
     //make royalty payment of a song for a given month
-    public String makeRoyaltyPayment(int songId, int month) {
+    public String makeRoyaltyPayment(int songId, int month, int year) {
         Connection connection = genericDAO.createConnection();
         try {
+
             connection.setAutoCommit(false);
             Statement statement = connection.createStatement();
-            //get the royalty generated for every song in the month specified
-            ResultSet royaltiesResultSet = statement.executeQuery("SELECT sh.playCount * s.royaltyRate AS amount " +
-                    " FROM songs s " +
-                    " INNER JOIN songHistory sh ON s.songId = sh.songId WHERE sh.month = "+month+" AND s.songId = " + songId);
+            ResultSet songHistoryMonth = statement.executeQuery("SELECT * FROM songHistory WHERE month = "+month+" AND songId = "+songId+";");
+            if(songHistoryMonth.next()) {
+                return "Royalty payment for this song was already paid in the given month";
+            }
+            ResultSet royaltiesResultSet = statement.executeQuery("SELECT playCount * royaltyRate AS amount FROM songs");
+            statement.executeQuery("INSERT INTO songHistory (songId, month, year, playCount) VALUES ("+songId+", "+month+", "+year+", (SELECT playCount FROM songs WHERE songId = "+songId+"))");
+            statement.execute("UPDATE songs SET playCount = 0 WHERE songId = "+songId);
+            //get the royalty generated for the mentioned song in the month specified
             royaltiesResultSet.next();
             double royaltiesGenerated = Double.parseDouble(new DecimalFormat("#.##").format(royaltiesResultSet.getDouble(1)));
             //find the record label of the primary artist of the given song

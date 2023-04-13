@@ -29,7 +29,7 @@ public class GenericDAO {
     public GenericDAO() {
     }
 
-    public ResultSet executeQuery(String query) {
+    public ResultSet executeQuery(String query) throws Exception {
         Connection connection = createConnection();
         ResultSet resultSet = null;
         try {
@@ -37,6 +37,7 @@ public class GenericDAO {
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception(query, e);
         }finally {
             closeConnection(connection);
         }
@@ -44,7 +45,7 @@ public class GenericDAO {
         return resultSet;
     }
 
-    public boolean executeUpdate(String query) {
+    public boolean executeUpdate(String query) throws Exception {
         Connection connection = createConnection();
         boolean result = false;
         try {
@@ -52,6 +53,7 @@ public class GenericDAO {
             result = statement.executeUpdate(query) > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception(query, e);
         }finally {
             closeConnection(connection);
         }
@@ -61,6 +63,7 @@ public class GenericDAO {
 
     private void closeConnection(Connection connection) {
         try {
+            System.out.println("Closing connection");
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

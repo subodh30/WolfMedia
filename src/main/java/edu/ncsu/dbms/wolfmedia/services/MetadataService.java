@@ -20,61 +20,61 @@ public class MetadataService {
         this.genericDAO = genericDAO;
     }
 
-    public Boolean addPlayCountSong(Integer songId, Integer playCount) {
+    public Boolean addPlayCountSong(Integer songId, Integer playCount) throws Exception {
             return genericDAO.executeUpdate("UPDATE songs SET playCount = "+playCount+"WHERE songId = "+songId);
     }
 
-    public Boolean addMonthlyListeners(Integer artistId, Integer monthlyListeners) {
+    public Boolean addMonthlyListeners(Integer artistId, Integer monthlyListeners) throws Exception {
             String query = "UPDATE artists SET monthlyListeners = "+monthlyListeners+"WHERE artistId = "+artistId;
             return genericDAO.executeUpdate(query);
 
     }
 
-    public Boolean addTotalSubscribers(Integer podcastId, Integer totalSubscribers) {
+    public Boolean addTotalSubscribers(Integer podcastId, Integer totalSubscribers)  throws Exception{
             String query = "UPDATE podcasts SET totalSubscribers = "+totalSubscribers+"WHERE podcastId = "+podcastId;
           return genericDAO.executeUpdate(query);
     }
 
-    public Boolean addPodcastRatings(Integer podcastId, Integer rating) {
+    public Boolean addPodcastRatings(Integer podcastId, Integer rating) throws Exception {
             String query = "UPDATE podcasts SET rating = "+rating+"WHERE podcastId = "+podcastId;
             return genericDAO.executeUpdate(query);
 
     }
 
-    public Boolean addPodcastEpisodeListenerCount(Integer podcastId, Integer episodeId, Integer listenerCount) {
+    public Boolean addPodcastEpisodeListenerCount(Integer podcastId, Integer episodeId, Integer listenerCount) throws Exception {
 
             String query = "UPDATE episodes SET ListenerCount = "+listenerCount+"WHERE podcastId = "+podcastId+" AND number = "+episodeId;
             return genericDAO.executeUpdate(query);
     }
 
-    public Boolean updatePlayCountSong(Integer songId, Integer playCount) {
+    public Boolean updatePlayCountSong(Integer songId, Integer playCount) throws Exception {
             String query = "UPDATE songs SET playCount = "+playCount+"WHERE songId = "+songId;
             return genericDAO.executeUpdate(query);
     }
 
-    public Boolean updateMonthlyListeners(Integer artistId, Integer monthlyListeners) {
+    public Boolean updateMonthlyListeners(Integer artistId, Integer monthlyListeners) throws Exception {
             String query = "UPDATE artists SET monthlyListeners = "+monthlyListeners+"WHERE artistId = "+artistId;
             return genericDAO.executeUpdate(query);
     }
 
-    public Boolean updateTotalSubscribers(Integer podcastId, Integer totalSubscribers) {
+    public Boolean updateTotalSubscribers(Integer podcastId, Integer totalSubscribers)  throws Exception{
             String query = "UPDATE podcasts SET totalSubscribers = "+totalSubscribers+"WHERE podcastId = "+podcastId;
             return genericDAO.executeUpdate(query);
     }
 
-    public Boolean updatePodcastRatings(Integer podcastId, Integer rating) {
+    public Boolean updatePodcastRatings(Integer podcastId, Integer rating)  throws Exception{
 
 
             String query = "UPDATE podcasts SET rating = "+rating+"WHERE podcastId = "+podcastId;
             return genericDAO.executeUpdate(query);
     }
 
-    public Boolean updatePodcastEpisodeListenerCount(Integer podcastId, Integer episodeId, Integer listenerCount) {
+    public Boolean updatePodcastEpisodeListenerCount(Integer podcastId, Integer episodeId, Integer listenerCount)  throws Exception{
             String query = "UPDATE episodes SET ListenerCount = "+listenerCount+"WHERE podcastId = "+podcastId+" AND number = "+episodeId;
             return genericDAO.executeUpdate(query);
     }
 
-    public List<Map<String, Object>> findSongsByArtist(Integer artistId) {
+    public List<Map<String, Object>> findSongsByArtist(Integer artistId)  throws Exception{
             String query = "SELECT distinct(songs.songId), title FROM songs LEFT JOIN creates ON songs.songId = creates.songId WHERE artistId = "+artistId+" OR primaryArtist = "+artistId;
             ResultSet rs = genericDAO.executeQuery(query);
             List<Map<String, Object>> result = new ArrayList<>();
@@ -88,7 +88,7 @@ public class MetadataService {
             return result;
     }
 
-    public List<Songs> findSongsByAlbum(Integer albumId) {
+    public List<Songs> findSongsByAlbum(Integer albumId)  throws Exception{
             String query = "SELECT * FROM songs WHERE albumId = " + albumId;
             ResultSet data = genericDAO.executeQuery(query);
             List<Songs> result = new ArrayList<>();
@@ -102,7 +102,7 @@ public class MetadataService {
             return result;
     }
 
-    public  List<Episodes> findPodcastEpisodes(Integer podcastId) {
+    public  List<Episodes> findPodcastEpisodes(Integer podcastId) throws Exception {
             String query = "SELECT * FROM episodes WHERE podcastId = "+podcastId;
             ResultSet data = genericDAO.executeQuery(query);
             List<Episodes> episodes = new ArrayList<>();

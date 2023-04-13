@@ -18,7 +18,7 @@ public class InformationProcessingService {
         this.genericDAO = genericDAO;
     }
 
-    public List<String> getTables() {
+    public List<String> getTables()  throws Exception{
         ResultSet data = genericDAO.executeQuery("SHOW TABLES");
         List<String> tables = new ArrayList<>();
         try {
@@ -31,7 +31,7 @@ public class InformationProcessingService {
         return tables;
     }
 
-    public List<String> getTableAttributes(String tableName) {
+    public List<String> getTableAttributes(String tableName)  throws Exception{
         ResultSet data = genericDAO.executeQuery("SHOW COLUMNS FROM " + tableName);
         List<String> attributes = new ArrayList<>();
         try {
@@ -44,7 +44,7 @@ public class InformationProcessingService {
         return attributes;
     }
 
-    public List<Songs> getSongs(int id) {
+    public List<Songs> getSongs(int id)  throws Exception{
         String query = "SELECT * FROM songs";
         if (id > 0) {
             query += " WHERE songId = " + id;
@@ -64,7 +64,7 @@ public class InformationProcessingService {
         return songs;
     }
 
-    public void addSong(Songs song) {
+    public void addSong(Songs song)  throws Exception{
 
         genericDAO.executeUpdate(
                 "INSERT INTO songs (songId, royaltyRate, title, royaltyStatus, playCount, country, language, duration, primaryArtist, albumId) "
@@ -76,7 +76,7 @@ public class InformationProcessingService {
                         + ", " + song.getAlbumId() + ")");
     }
 
-    public void updateSong(Songs song) {
+    public void updateSong(Songs song)  throws Exception{
         genericDAO.executeUpdate(
                 "UPDATE songs SET songId = " + song.getSongId() + ", royaltyRate = " + song.getRoyaltyRate()
                         + ", title = '" + song.getTitle() + "', royaltyStatus = '" + song.getRoyaltyStatus()
@@ -87,12 +87,12 @@ public class InformationProcessingService {
                         + ", albumId = " + song.getAlbumId() + " WHERE songId = " + song.getSongId());
     }
 
-    public void deleteSong(int songId) {
+    public void deleteSong(int songId) throws Exception {
         genericDAO.executeUpdate("DELETE FROM songs WHERE songId = " + songId);
     }
 
     // Albums
-    public List<Albums> getAlbums(int i) {
+    public List<Albums> getAlbums(int i) throws Exception {
         String query = "SELECT * FROM albums";
         if (i > 0) {
             query += " WHERE albumId = " + i;
@@ -110,7 +110,7 @@ public class InformationProcessingService {
         return albums;
     }
 
-    public void addAlbum(Albums album) {
+    public void addAlbum(Albums album)  throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO albums (albumId, name, releaseYear, edition) "
                         +
@@ -118,18 +118,18 @@ public class InformationProcessingService {
                         + ", '" + album.getEdition() + "')");
     }
 
-    public void updateAlbum(Albums album) {
+    public void updateAlbum(Albums album) throws Exception {
         genericDAO.executeUpdate(
                 "UPDATE albums SET albumId = " + album.getAlbumId() + ", name = '" + album.getName()
                         + "', releaseYear = " + album.getReleaseYear() + ", edition = '" + album.getEdition()
                         + "' WHERE albumId = " + album.getAlbumId());
     }
 
-    public void deleteAlbum(int albumId) {
+    public void deleteAlbum(int albumId) throws Exception {
         genericDAO.executeUpdate("DELETE FROM albums WHERE albumId = " + albumId);
     }
 
-    public List<Artists> getArtists(int i) {
+    public List<Artists> getArtists(int i)  throws Exception{
         // write code for fetching artists
         String query = "SELECT * FROM artists";
         if (i > 0) {
@@ -149,7 +149,7 @@ public class InformationProcessingService {
         return artists;
     }
 
-    public void addArtist(Artists artist) {
+    public void addArtist(Artists artist)  throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO artists (artistId, name, status, country, primaryGenre, monthlyListeners, recordId) "
                         +
@@ -158,7 +158,7 @@ public class InformationProcessingService {
                         + artist.getMonthlyListeners() + ", " + artist.getRecordId() + ")");
     }
 
-    public void updateArtist(Artists artist) {
+    public void updateArtist(Artists artist) throws Exception {
         genericDAO.executeUpdate(
                 "UPDATE artists SET artistId = " + artist.getArtistId() + ", name = '" + artist.getName()
                         + "', status = '" + artist.getStatus() + "', country = '" + artist.getCountry()
@@ -167,12 +167,12 @@ public class InformationProcessingService {
                         + artist.getArtistId());
     }
 
-    public void deleteArtist(int artistId) {
+    public void deleteArtist(int artistId)  throws Exception{
         genericDAO.executeUpdate("DELETE FROM artists WHERE artistId = " + artistId);
     }
 
     // Podcasts
-    public List<Podcasts> getPodcasts(int i) {
+    public List<Podcasts> getPodcasts(int i)  throws Exception{
         String query = "SELECT * FROM podcasts";
         if (i > 0) {
             query += " WHERE podcastId = " + i;
@@ -191,7 +191,7 @@ public class InformationProcessingService {
         return podcasts;
     }
 
-    public void addPodcast(Podcasts podcast) {
+    public void addPodcast(Podcasts podcast)  throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO podcasts (podcastId, name, country, language, rating, episodeCount, flatFee, totalSubscribers) "
                         +
@@ -201,7 +201,7 @@ public class InformationProcessingService {
                         + ")");
     }
 
-    public void updatePodcast(Podcasts podcast) {
+    public void updatePodcast(Podcasts podcast) throws Exception {
         genericDAO.executeUpdate(
                 "UPDATE podcasts SET podcastId = " + podcast.getPodcastId() + ", name = '" + podcast.getName()
                         + "', country = '" + podcast.getCountry() + "', language = '" + podcast.getLanguage()
@@ -210,12 +210,12 @@ public class InformationProcessingService {
                         + podcast.getTotalSubscribers() + " WHERE podcastId = " + podcast.getPodcastId());
     }
 
-    public void deletePodcast(int podcastId) {
+    public void deletePodcast(int podcastId)  throws Exception{
         genericDAO.executeUpdate("DELETE FROM podcasts WHERE podcastId = " + podcastId);
     }
 
     // Podcast Hosts
-    public List<PodcastHosts> getPodcastHosts(int id) {
+    public List<PodcastHosts> getPodcastHosts(int id)  throws Exception{
         String query = "SELECT * FROM podcastHosts";
         if (id > 0) {
             query += " WHERE hostId = " + id;
@@ -234,7 +234,7 @@ public class InformationProcessingService {
         return podcastHosts;
     }
 
-    public void addPodcastHost(PodcastHosts podcastHost) {
+    public void addPodcastHost(PodcastHosts podcastHost) throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO podcastHosts (hostId, firstName, lastName, contact, email, city) "
                         +
@@ -243,7 +243,7 @@ public class InformationProcessingService {
                         + podcastHost.getEmail() + "', '" + podcastHost.getCity() + "')");
     }
 
-    public void updatePodcastHost(PodcastHosts podcastHost) {
+    public void updatePodcastHost(PodcastHosts podcastHost)  throws Exception{
         genericDAO.executeUpdate(
                 "UPDATE podcastHosts SET firstName = '" + podcastHost.getFirstName() + "', lastName = '"
                         + podcastHost.getLastName() + "', contact = '" + podcastHost.getContact() + "', email = '"
@@ -251,12 +251,12 @@ public class InformationProcessingService {
                         + podcastHost.getHostId());
     }
 
-    public void deletePodcastHost(int hostId) {
+    public void deletePodcastHost(int hostId)  throws Exception{
         genericDAO.executeUpdate("DELETE FROM podcastHosts WHERE hostId = " + hostId);
     }
 
     // Episodes
-    public List<Episodes> getPodcastEpisodes(int i) {
+    public List<Episodes> getPodcastEpisodes(int i) throws Exception {
         String query = "SELECT * FROM episodes";
         if (i > 0) {
             query += " WHERE podcastId = " + i;
@@ -277,7 +277,7 @@ public class InformationProcessingService {
         return episodes;
     }
 
-    public void addPodcastEpisode(Episodes episode) {
+    public void addPodcastEpisode(Episodes episode)  throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO episodes (podcastId, number, title, duration, releaseDate, ListeningCount, AdvertisementCount) "
                         +
@@ -286,7 +286,7 @@ public class InformationProcessingService {
                         + episode.getListeningCount() + ", " + episode.getAdvertisementCount() + ")");
     }
 
-    public void updatePodcastEpisode(Episodes episode) {
+    public void updatePodcastEpisode(Episodes episode)  throws Exception{
         genericDAO.executeUpdate(
                 "UPDATE episodes SET title = '" + episode.getTitle() + "', duration = " + episode.getDuration()
                         + ", releaseDate = '" + episode.getReleaseDate() + "', ListeningCount = "
@@ -294,35 +294,35 @@ public class InformationProcessingService {
                         + " WHERE podcastId = " + episode.getPodcastId() + " AND number = " + episode.getNumber());
     }
 
-    public void deletePodcastEpisode(int podcastId, int number) {
+    public void deletePodcastEpisode(int podcastId, int number)  throws Exception{
         genericDAO.executeUpdate("DELETE FROM episodes WHERE number = " + number + " AND podcastId = " + podcastId);
     }
 
     // Assign Artist to Album
-    public void assignArtistToAlbum(int artistId, int albumId) {
+    public void assignArtistToAlbum(int artistId, int albumId) throws Exception {
         genericDAO.executeUpdate(
                 "INSERT INTO artistHas(artistId, albumId) VALUES (" + artistId + ", " + albumId + ")");
     }
 
     // Assign Song to Album
-    public void assignSongToAlbum(int songId, int albumId) {
+    public void assignSongToAlbum(int songId, int albumId)  throws Exception{
         genericDAO.executeUpdate("UPDATE songs SET albumId = " + albumId + " WHERE songId = " + songId);
     }
 
     // assignArtistToRecordLabel
-    public void assignArtistToRecordLabel(int artistId, int recordLabelId) {
+    public void assignArtistToRecordLabel(int artistId, int recordLabelId) throws Exception {
         genericDAO.executeUpdate(
                 "UPDATE artists SET recordId=" + recordLabelId + " WHERE artistId=" + artistId);
     }
 
     // assignEpisodeToPodcast
-    public void assignEpisodeToPodcast(int number, int podcastId) {
+    public void assignEpisodeToPodcast(int number, int podcastId)  throws Exception{
         genericDAO.executeUpdate(
                 "UPDATE episodes SET podcastId=" + podcastId + " WHERE number=" + number);
     }
 
     // assignPodcastHostToPodcast
-    public void assignPodcastHostToPodcast(int podcastId, int hostId) {
+    public void assignPodcastHostToPodcast(int podcastId, int hostId)  throws Exception{
         genericDAO.executeUpdate(
                 "INSERT INTO createdBy (podcastId, hostId) VALUES (" + podcastId + ", " + hostId + ")");
     }

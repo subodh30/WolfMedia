@@ -19,57 +19,57 @@ public class ReportOperationController {
     }
 
     @GetMapping("/playCountPersongPerMonth")
-    public List<SongHistory> getPlayCountPerSongPerMonth() {
+    public List<SongHistory> getPlayCountPerSongPerMonth() throws Exception {
         return reportOperationService.getPlayCountPerSongPerMonth();
     }
 
     @GetMapping("/playCountPerAlbumPerMonth")
-    public List<Map<String, Object>> getPlayCountPerAlbumPerMonth() {
+    public List<Map<String, Object>> getPlayCountPerAlbumPerMonth() throws Exception {
         return reportOperationService.getPlayCountPerAlbumPerMonth();
     }
 
     @GetMapping("/playCountPerArtistPerMonth")
-    public List<Map<String, Object>> getPlayCountPerArtistPerMonth() {
+    public List<Map<String, Object>> getPlayCountPerArtistPerMonth() throws Exception {
         return reportOperationService.getPlayCountPerArtistPerMonth();
     }
 
     @GetMapping("/calculateHostPayments")
-    public Double calculateHostPayments(@RequestParam String startDate, @RequestParam String endDate) {
+    public Double calculateHostPayments(@RequestParam String startDate, @RequestParam String endDate) throws Exception {
         return reportOperationService.calculateHostPayments(startDate, endDate);
     }
 
     @GetMapping("/calculateArtistPayments")
-    public Double calculateArtistPayments(@RequestParam String startDate, @RequestParam String endDate) {
+    public Double calculateArtistPayments(@RequestParam String startDate, @RequestParam String endDate) throws Exception {
         return reportOperationService.calculateArtistPayments(startDate, endDate);
     }
 
     @GetMapping("/calculateRecordLabelPayments")
-    public Double calculateRecordLabelPayments(@RequestParam String startDate, @RequestParam String endDate) {
+    public Double calculateRecordLabelPayments(@RequestParam String startDate, @RequestParam String endDate) throws Exception {
         return reportOperationService.calculateRecordLabelPayments(startDate, endDate);
     }
 
     @GetMapping("/calculateMonthlyRevenue")
-    public List<Map<String, Object>> calculateMonthlyRevenue() {
+    public List<Map<String, Object>> calculateMonthlyRevenue() throws Exception {
         return reportOperationService.calculateMonthlyRevenue();
     }
 
     @GetMapping("/calculateYearlyRevenue")
-    public List<Map<String, Object>> calculateYearlyRevenue() {
+    public List<Map<String, Object>> calculateYearlyRevenue() throws Exception {
         return reportOperationService.calculateYearlyRevenue();
     }
 
     @GetMapping("/songsByArtist/{artistId}")
-    public List<Map<String, Object>> getSongsByArtist(@PathVariable("artistId") int artistId) {
+    public List<Map<String, Object>> getSongsByArtist(@PathVariable("artistId") int artistId) throws Exception {
         return reportOperationService.getSongsByArtist(artistId);
     }
 
     @GetMapping("/getSongsByAlbum/{albumId}")
-    public List<Map<String, Object>> getSongsByAlbum(@PathVariable("albumId") int albumId) {
+    public List<Map<String, Object>> getSongsByAlbum(@PathVariable("albumId") int albumId) throws Exception {
         return reportOperationService.getSongsByAlbum(albumId);
     }
 
     @GetMapping("/getPodcastEpisodesByPodcast/{podcastId}")
-    public List<Map<String, Object>> getPodcastEpisodesByPodcast(@PathVariable("podcastId") int podcastId) {
+    public List<Map<String, Object>> getPodcastEpisodesByPodcast(@PathVariable("podcastId") int podcastId) throws Exception {
         return reportOperationService.getPodcastEpisodesByPodcast(podcastId);
     }
 }

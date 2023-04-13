@@ -21,10 +21,11 @@ public class ReportOperationService {
         this.genericDAO = genericDAO;
     }
 
-    public List<SongHistory> getPlayCountPerSongPerMonth() {
-        ResultSet data = genericDAO.executeQuery("SELECT * FROM songHistory;");
+    public List<SongHistory> getPlayCountPerSongPerMonth() throws Exception {
+
         List<SongHistory> songsHistory = new ArrayList<>();
         try {
+            ResultSet data = genericDAO.executeQuery("SELECT * FROM songHistory;");
             while (data.next()) {
                 songsHistory.add(new SongHistory(data.getInt("songId"), data.getInt("month"), data.getInt("year"), data.getInt("playCount")));
             }
@@ -34,7 +35,7 @@ public class ReportOperationService {
         return songsHistory;
     }
 
-    public List<Map<String, Object>> getPlayCountPerAlbumPerMonth() {
+    public List<Map<String, Object>> getPlayCountPerAlbumPerMonth() throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT albums.albumId, albums.name, month, year, SUM(songHistory.playCount) AS 'Play Count' FROM songs INNER JOIN songHistory ON songs.songId = songHistory.songId INNER JOIN albums ON songs.albumId = albums.albumId GROUP BY albums.albumId, albums.name, month, year;");
         List<Map<String, Object>> albumList = new ArrayList<>();
         try {
@@ -53,7 +54,7 @@ public class ReportOperationService {
         return albumList;
     }
 
-    public List<Map<String, Object>> getPlayCountPerArtistPerMonth() {
+    public List<Map<String, Object>> getPlayCountPerArtistPerMonth() throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT combined.artistId, combined.name, month, year, SUM(playCount) FROM((SELECT artists.artistId, artists.name, month, year, SUM(songHistory.playCount) AS playCount FROM songs INNER JOIN songHistory ON songs.songId = songHistory.songId INNER JOIN artists ON songs.primaryArtist = artists.artistId GROUP BY artists.artistId, month, year) UNION ALL (SELECT artists.artistId, artists.name, month, year, SUM(songHistory.playCount) AS playCount FROM songHistory INNER JOIN creates ON creates.songId = songHistory.songId INNER JOIN artists ON creates.artistId = artists.artistId GROUP BY artists.artistId, month, year)) AS combined GROUP BY combined.artistId, combined.name, month, year;");
         List<Map<String, Object>> artistList = new ArrayList<>();
         try {
@@ -72,7 +73,7 @@ public class ReportOperationService {
         return artistList;
     }
 
-    public Double calculateHostPayments(String startDate, String endDate) {
+    public Double calculateHostPayments(String startDate, String endDate) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT SUM(amount) FROM givesPaymentTo INNER JOIN serviceAccount ON givesPaymentTo.transactionId = serviceAccount.transactionId WHERE date BETWEEN '" + startDate + "' AND '" + endDate + "'");
         Double totalPayment = 0.0;
         try {
@@ -85,7 +86,7 @@ public class ReportOperationService {
         return totalPayment;
     }
 
-    public Double calculateArtistPayments(String startDate, String endDate) {
+    public Double calculateArtistPayments(String startDate, String endDate) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT SUM(amount) FROM distributesRoyalties WHERE date BETWEEN '" + startDate + "' and '" + endDate + "'");
         Double totalPayment = 0.0;
         try {
@@ -98,7 +99,7 @@ public class ReportOperationService {
         return totalPayment;
     }
 
-    public Double calculateRecordLabelPayments(String startDate, String endDate) {
+    public Double calculateRecordLabelPayments(String startDate, String endDate) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT 0.3*SUM(amount) AS 'Record Label Payments' FROM receives INNER JOIN serviceAccount ON receives.transactionId = serviceAccount.transactionId WHERE date BETWEEN '" + startDate + "' and '" + endDate + "'");
         Double totalPayment = 0.0;
         try {
@@ -111,7 +112,7 @@ public class ReportOperationService {
         return totalPayment;
     }
 
-    public List<Map<String, Object>> calculateMonthlyRevenue() {
+    public List<Map<String, Object>> calculateMonthlyRevenue() throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT YEAR(date) AS year, MONTH(date) AS month, SUM(CASE WHEN type = 'Credit' THEN amount ELSE 0 END) AS revenue FROM serviceAccount GROUP BY YEAR(date), MONTH(date);");
 
         List<Map<String, Object>> revenueList = new ArrayList<>();
@@ -129,7 +130,7 @@ public class ReportOperationService {
         return revenueList;
     }
 
-    public List<Map<String, Object>> calculateYearlyRevenue() {
+    public List<Map<String, Object>> calculateYearlyRevenue() throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT YEAR(date) AS year, SUM(CASE WHEN type = 'Credit' THEN amount ELSE 0 END) AS revenue FROM serviceAccount GROUP BY YEAR(date);");
 
         List<Map<String, Object>> revenueList = new ArrayList<>();
@@ -146,7 +147,7 @@ public class ReportOperationService {
         return revenueList;
     }
 
-    public List<Map<String, Object>> getSongsByArtist(int artistId) {
+    public List<Map<String, Object>> getSongsByArtist(int artistId) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT distinct(songs.songId), title FROM songs LEFT JOIN creates ON songs.songId = creates.songId WHERE artistId = " + artistId + " OR primaryArtist = " + artistId + ";");
 
         List<Map<String, Object>> songs = new ArrayList<>();
@@ -163,7 +164,7 @@ public class ReportOperationService {
         return songs;
     }
 
-    public List<Map<String, Object>> getSongsByAlbum(int albumId) {
+    public List<Map<String, Object>> getSongsByAlbum(int albumId) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT songId, title from songs WHERE albumId = " + albumId + ";");
 
         List<Map<String, Object>> songs = new ArrayList<>();
@@ -180,7 +181,7 @@ public class ReportOperationService {
         return songs;
     }
 
-    public List<Map<String, Object>> getPodcastEpisodesByPodcast(int podcastId) {
+    public List<Map<String, Object>> getPodcastEpisodesByPodcast(int podcastId) throws Exception {
         ResultSet data = genericDAO.executeQuery("SELECT * FROM episodes WHERE podcastId = " + podcastId + ";");
 
         List<Map<String, Object>> episodes = new ArrayList<>();

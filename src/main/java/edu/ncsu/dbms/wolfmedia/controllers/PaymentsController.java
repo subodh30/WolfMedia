@@ -1,7 +1,6 @@
 package edu.ncsu.dbms.wolfmedia.controllers;
 
 import edu.ncsu.dbms.wolfmedia.services.PaymentsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,18 +18,18 @@ public class PaymentsController {
     }
 
     @GetMapping("/makeRoyaltyPayment")
-    public String makeRoyaltyPayment(@RequestParam Integer songId) {
-        return paymentsService.makeRoyaltyPayment(songId);
+    public String makeRoyaltyPayment(@RequestParam Integer songId, @RequestParam int month) {
+        return paymentsService.makeRoyaltyPayment(songId, month);
     }
 
     @GetMapping("/generateMonthlyRoyalties")
-    public List<Map<String, Object>> generateMonthlyRoyalties() {
-        return paymentsService.generateMonthlyRoyalties();
+    public List<Map<String, Object>> generateMonthlyRoyalties(@RequestParam int month) {
+        return paymentsService.generateMonthlyRoyalty(month);
     }
 
     @GetMapping("/makePaymentToPodcastHost")
-    public String makePaymentToPodcastHost() {
-        return paymentsService.makePaymentToPodcastHost();
+    public String makePaymentToPodcastHost(@RequestParam int month) {
+        return paymentsService.makePaymentToPodcastHost(month);
     }
 
     @GetMapping("/receivePaymentFromSubscribers")

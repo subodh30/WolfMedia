@@ -18,7 +18,7 @@ public class ReportOperationController {
         this.reportOperationService = reportOperationService;
     }
 
-    @GetMapping("/playCountPersongPerMonth")
+    @GetMapping("/playCountPeSongPerMonth")
     public List<SongHistory> getPlayCountPerSongPerMonth() throws Exception {
         return reportOperationService.getPlayCountPerSongPerMonth();
     }

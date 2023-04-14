@@ -61,7 +61,7 @@ public class GenericDAO {
         return result;
     }
 
-    private void closeConnection(Connection connection) {
+    public void closeConnection(Connection connection) {
         try {
             System.out.println("Closing connection");
             connection.close();

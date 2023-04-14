@@ -18,22 +18,22 @@ public class PaymentsController {
     }
 
     @GetMapping("/makeRoyaltyPayment")
-    public String makeRoyaltyPayment(@RequestParam Integer songId, @RequestParam int month, @RequestParam int year) {
+    public String makeRoyaltyPayment(@RequestParam Integer songId, @RequestParam int month, @RequestParam int year) throws Exception {
         return paymentsService.makeRoyaltyPayment(songId, month, year);
     }
 
     @GetMapping("/generateMonthlyRoyalties")
-    public List<Map<String, Object>> generateMonthlyRoyalties(@RequestParam int month) {
+    public List<Map<String, Object>> generateMonthlyRoyalties(@RequestParam int month) throws Exception {
         return paymentsService.generateMonthlyRoyalty(month);
     }
 
     @GetMapping("/makePaymentToPodcastHost")
-    public String makePaymentToPodcastHost(@RequestParam int month) {
+    public String makePaymentToPodcastHost(@RequestParam int month) throws Exception {
         return paymentsService.makePaymentToPodcastHost(month);
     }
 
     @GetMapping("/receivePaymentFromSubscribers")
-    public String receivePaymentFromSubscribers() {
+    public String receivePaymentFromSubscribers() throws Exception {
         return paymentsService.receivePaymentFromSubscribers();
     }
 

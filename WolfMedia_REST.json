@@ -1,0 +1,1502 @@
+{
+	"info": {
+		"_postman_id": "0f59610f-89bb-410d-96fd-1a01d6e67e2f",
+		"name": "WolfMedia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ReportOperations",
+			"item": [
+				{
+					"name": "playCountPeSongPerMonth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/playCountPeSongPerMonth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"playCountPeSongPerMonth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "playCountPerAlbumPerMonth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/playCountPerAlbumPerMonth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"playCountPerAlbumPerMonth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "playCountPerArtistPerMonth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/playCountPerArtistPerMonth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"playCountPerArtistPerMonth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculateHostPayments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/calculateHostPayments?startDate=2023-01-01&endDate=2023-04-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"calculateHostPayments"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-04-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculateArtistPayments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/calculateArtistPayments?startDate=2023-01-01&endDate=2023-04-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"calculateArtistPayments"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-04-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculateRecordLabelPayments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/calculateRecordLabelPayments?startDate=2023-01-01&endDate=2023-04-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"calculateRecordLabelPayments"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2023-04-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculateMonthlyRevenue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/calculateMonthlyRevenue",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"calculateMonthlyRevenue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculateYearlyRevenue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/calculateYearlyRevenue",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"calculateYearlyRevenue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSongsByArtist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/songsByArtist/2002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songsByArtist",
+								"2002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSongsByAlbum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getSongsByAlbum/4001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getSongsByAlbum",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcastEpisodesByPodcast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/getPodcastEpisodesByPodcast/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getPodcastEpisodesByPodcast",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "makeRoyaltyPayment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/makeRoyaltyPayment?songId=1002&month=4&year=2023",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"makeRoyaltyPayment"
+							],
+							"query": [
+								{
+									"key": "songId",
+									"value": "1002"
+								},
+								{
+									"key": "month",
+									"value": "4"
+								},
+								{
+									"key": "year",
+									"value": "2023"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "generateMonthlyRoyalties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/generateMonthlyRoyalties?month=1&year=2023",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"generateMonthlyRoyalties"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2023"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "makePaymentToPodcastHost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/makePaymentToPodcastHost?month=1&year=2023",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"makePaymentToPodcastHost"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2023"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "receivePaymentFromSubscribers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/receivePaymentFromSubscribers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receivePaymentFromSubscribers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InformationProcessing",
+			"item": [
+				{
+					"name": "getTables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tables",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSongs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/songs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/songs/1002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSong",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"songId\": \"1002\",\n    \"royaltyRate\": 0.1,\n    \"title\": \"Chal chal ave\",\n    \"royaltyStatus\": \"yes\",\n    \"playCount\": 0,\n    \"country\": \"India\",\n    \"language\": \"English\",\n    \"duration\": 3.5,\n    \"primaryArtist\": 2001,\n    \"albumId\": 4002\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/songs/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSong",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"songId\": \"1002\",\n    \"royaltyRate\": 0.1,\n    \"title\": \"Hello\",\n    \"royaltyStatus\": \"yes\",\n    \"playCount\": 0,\n    \"country\": \"India\",\n    \"language\": \"English\",\n    \"duration\": 3.5,\n    \"primaryArtist\": 2001,\n    \"albumId\": 4002\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/songs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSong",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/songs/1011",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs",
+								"1011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAlbums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/albums",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAlbum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/albums/4001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"albums",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addAlbum",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"albumId\": 4005,\n    \"name\": \"Electric Oasis\",\n    \"releaseYear\": 2023,\n    \"edition\": \"Deluxe Edition\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/albums",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAlbum",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"albumId\": 4001,\n    \"name\": \"Electric Oasis\",\n    \"releaseYear\": 2023,\n    \"edition\": \"Deluxe Edition\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/albums",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAlbum",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/albums/4005",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"albums",
+								"4005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArtists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArtist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists/2001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists",
+								"2001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addArtist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"artistId\": 2003,\n    \"name\": \"Forest\",\n    \"status\": \"active\",\n    \"country\": \"United States\",\n    \"primaryGenre\": \"1\",\n    \"monthlyListeners\": 25,\n    \"recordId\": 3001\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/artists",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateArtist",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteArtist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists/2003",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists",
+								"2003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcastHost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastHosts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastHosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcastHost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastHosts/6001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastHosts",
+								"6001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcastHost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hostId\": 6001,\n    \"firstName\": \"Matthew\",\n    \"lastName\": \"Wilson\",\n    \"contact\": \"7679876547\",\n    \"email\": \"matthew.wilson@gmail.com\",\n    \"city\": \"New York\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcastHosts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastHosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePodcastHost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hostId\": 6001,\n    \"firstName\": \"Matthew\",\n    \"lastName\": \"Wilson\",\n    \"contact\": \"7679876547\",\n    \"email\": \"matthew.wilson@gmail.com\",\n    \"city\": \"New York\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcastHosts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastHosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePodcastHost",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastHosts/6002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastHosts",
+								"6002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcasts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcasts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcasts/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcast",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"podcastId\": 5001,\n    \"name\": \"Mind Over Matter: Exploring the Power of the Human Mind\",\n    \"country\": \"USA\",\n    \"language\": \"English\",\n    \"rating\": 4,\n    \"episodeCount\": 5,\n    \"flatFee\": 10.0,\n    \"totalSubscribers\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcasts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePodcast",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"podcastId\": 5001,\n    \"name\": \"Mind Over Matter: Exploring the Power of the Human Mind\",\n    \"country\": \"USA\",\n    \"language\": \"English\",\n    \"rating\": 4,\n    \"episodeCount\": 5,\n    \"flatFee\": 10.0,\n    \"totalSubscribers\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcasts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePodcasts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcasts/5002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts",
+								"5002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcastEpisodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastEpisodes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastEpisodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPodcastEpisode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastEpisodes/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastEpisodes",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcastEpisode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"podcastId\": 5001,\n        \"number\": 7001,\n        \"title\": \"The Science of Mindfulness\",\n        \"duration\": 1.5,\n        \"releaseDate\": \"2023-01-01\",\n        \"listeningCount\": 100,\n        \"advertisementCount\": 10\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcastEpisodes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastEpisodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcastEpisode Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"podcastId\": 5001,\n        \"number\": 7001,\n        \"title\": \"The Science of Mindfulness\",\n        \"duration\": 1.5,\n        \"releaseDate\": \"2023-01-01\",\n        \"listeningCount\": 100,\n        \"advertisementCount\": 10\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/podcastEpisodes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastEpisodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePodcastEpisode",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcastEpisodes/5002/7002",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcastEpisodes",
+								"5002",
+								"7002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignArtistToAlbum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists/2001/albums/4001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists",
+								"2001",
+								"albums",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignSongToAlbum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/songs/1001/albums/4001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"songs",
+								"1001",
+								"albums",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignArtistToRecordLabel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/artists/2001/recordLabels/3001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"artists",
+								"2001",
+								"recordLabels",
+								"3001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignEpisodeToPodcast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/episodes/7001/podcasts/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"episodes",
+								"7001",
+								"podcasts",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignPodcastHostToPodcast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/podcasts/5001/hosts/6001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"podcasts",
+								"5001",
+								"hosts",
+								"6001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metadata",
+			"item": [
+				{
+					"name": "addPlayCountSong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addPlayCountSong?songId=1001&playCount=500",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addPlayCountSong"
+							],
+							"query": [
+								{
+									"key": "songId",
+									"value": "1001"
+								},
+								{
+									"key": "playCount",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addMonthlyListeners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addMonthlyListeners?artistId=2001&monthlyListeners=25",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addMonthlyListeners"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "2001"
+								},
+								{
+									"key": "monthlyListeners",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTotalSubscribers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addTotalSubscribers?podcastId=5001&totalSubscribers=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addTotalSubscribers"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "totalSubscribers",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcastRatings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addPodcastRatings?podcastId=5001&rating=4.5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addPodcastRatings"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "rating",
+									"value": "4.5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPodcastEpisodeListenerCount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addPodcastEpisodeListenerCount?podcastId=5001&number=7001&ListeningCount=200",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addPodcastEpisodeListenerCount"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "number",
+									"value": "7001"
+								},
+								{
+									"key": "ListeningCount",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePlayCountSong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/updatePlayCountSong?songId=1001&playCount=500",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updatePlayCountSong"
+							],
+							"query": [
+								{
+									"key": "songId",
+									"value": "1001"
+								},
+								{
+									"key": "playCount",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMonthlyListeners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/updateMonthlyListeners?artistId=2001&monthlyListeners=25",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateMonthlyListeners"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "2001"
+								},
+								{
+									"key": "monthlyListeners",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTotalSubscribers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/updateTotalSubscribers?podcastId=5001&totalSubscribers=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateTotalSubscribers"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "totalSubscribers",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePodcastRatings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/updatePodcastRatings?podcastId=5001&rating=4.5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updatePodcastRatings"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "rating",
+									"value": "4.5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePodcastEpisodeListenerCount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/updatePodcastEpisodeListenerCount?podcastId=5001&number=7001&ListeningCount=200",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updatePodcastEpisodeListenerCount"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								},
+								{
+									"key": "number",
+									"value": "7001"
+								},
+								{
+									"key": "ListeningCount",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSongsByArtist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/findSongsByArtist?artistId=2001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"findSongsByArtist"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "2001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSongsByAlbum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/findSongsByAlbum?albumId=4001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"findSongsByAlbum"
+							],
+							"query": [
+								{
+									"key": "albumId",
+									"value": "4001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPodcastEpisodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/findPodcastEpisodes?podcastId=5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"findPodcastEpisodes"
+							],
+							"query": [
+								{
+									"key": "podcastId",
+									"value": "5001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

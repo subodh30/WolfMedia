@@ -81,7 +81,7 @@ public class GenericDAO {
      * Closes the connection to the database
      * @param connection Connection object
      */
-    private void closeConnection(Connection connection) {
+    public void closeConnection(Connection connection) {
         try {
             System.out.println("Closing connection");
             connection.close();

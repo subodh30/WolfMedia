@@ -89,6 +89,8 @@ public class PaymentsService {
                 }
             }
             return "Payment Failed. Transaction is rolled back";
+        }finally {
+            closeConnection(connection);
         }
     }
 
@@ -99,8 +101,8 @@ public class PaymentsService {
      */
     public List<Map<String, Object>> generateMonthlyRoyalty(int month) {
         List<Map<String, Object>> result = new ArrayList<>();
+        Connection connection = genericDAO.createConnection();
         try {
-            Connection connection = genericDAO.createConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT s.songId,  " +
                     "  (sh.playCount * s.royaltyRate) AS royaltyGenAmount" +
@@ -114,6 +116,8 @@ public class PaymentsService {
             e.printStackTrace();
             result.clear();
             result.add(Map.of("Error Occurred", e.getMessage()));
+        }finally {
+            closeConnection(connection);
         }
         return result;
     }
@@ -172,6 +176,8 @@ public class PaymentsService {
                 }
             }
             return "Payment to Podcast Host has Failed. Transaction is rolled back";
+        }finally {
+            closeConnection(connection);
         }
     }
 
@@ -212,6 +218,17 @@ public class PaymentsService {
                 }
             }
             return "Payment from subscribers failed. Transaction is rolled back";
+        }finally {
+            closeConnection(connection);
+        }
+    }
+
+    private void closeConnection(Connection connection) {
+        try {
+            System.out.println("Closing connection");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

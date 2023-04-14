@@ -88,6 +88,5 @@ public class GenericDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }

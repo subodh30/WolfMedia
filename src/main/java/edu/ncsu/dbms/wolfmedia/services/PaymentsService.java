@@ -99,7 +99,7 @@ public class PaymentsService {
      * @param month month for which the royalty is to be generated
      * @return List of maps containing the songId and the royalty generated for the song
      */
-    public List<Map<String, Object>> generateMonthlyRoyalty(int month) {
+    public List<Map<String, Object>> generateMonthlyRoyalty(int month, int year) {
         List<Map<String, Object>> result = new ArrayList<>();
         Connection connection = genericDAO.createConnection();
         try {
@@ -108,7 +108,7 @@ public class PaymentsService {
                     "  (sh.playCount * s.royaltyRate) AS royaltyGenAmount" +
                     "  FROM songs s" +
                     "  JOIN songHistory sh ON s.songId = sh.songId" +
-                    "  WHERE sh.month = "+month+";");
+                    "  WHERE sh.month = "+month+" AND sh.year = "+year+";");
             while (resultSet.next()) {
                 result.add(Map.of("songId", resultSet.getInt(1), "Royalty generated in month "+month, new DecimalFormat().format(resultSet.getDouble(2))));
             }
@@ -127,7 +127,7 @@ public class PaymentsService {
      * @param month month for which the payment is to be made
      * @return String containing the status of the payment
      */
-    public String  makePaymentToPodcastHost(int month) {
+    public String  makePaymentToPodcastHost(int month, int year) {
         Connection connection = genericDAO.createConnection();
         try {
             connection.setAutoCommit(false);
@@ -135,7 +135,7 @@ public class PaymentsService {
             ResultSet bonusResultSet = statement.executeQuery("SELECT createdBy.hostId, SUM(episodes.AdvertisementCount * 10) as bonus\n" +
                     " FROM podcasts JOIN createdBy ON podcasts.podcastId = createdBy.podcastId " +
                     " JOIN episodes ON episodes.podcastId = podcasts.podcastId " +
-                    " WHERE MONTH(episodes.releaseDate) = "+month +
+                    " WHERE MONTH(episodes.releaseDate) = "+month+" AND YEAR(episodes.releaseDate) = "+year+
                     " GROUP BY createdBy.hostId;");
             Map<Integer, Double> hostPayments = new HashMap<>();
             while(bonusResultSet.next()) {

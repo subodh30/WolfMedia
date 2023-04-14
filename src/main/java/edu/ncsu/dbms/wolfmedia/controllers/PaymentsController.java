@@ -23,13 +23,13 @@ public class PaymentsController {
     }
 
     @GetMapping("/generateMonthlyRoyalties")
-    public List<Map<String, Object>> generateMonthlyRoyalties(@RequestParam int month) throws Exception {
-        return paymentsService.generateMonthlyRoyalty(month);
+    public List<Map<String, Object>> generateMonthlyRoyalties(@RequestParam int month, @RequestParam int year) throws Exception {
+        return paymentsService.generateMonthlyRoyalty(month, year);
     }
 
     @GetMapping("/makePaymentToPodcastHost")
-    public String makePaymentToPodcastHost(@RequestParam int month) throws Exception {
-        return paymentsService.makePaymentToPodcastHost(month);
+    public String makePaymentToPodcastHost(@RequestParam int month, @RequestParam int year) throws Exception {
+        return paymentsService.makePaymentToPodcastHost(month, year);
     }
 
     @GetMapping("/receivePaymentFromSubscribers")

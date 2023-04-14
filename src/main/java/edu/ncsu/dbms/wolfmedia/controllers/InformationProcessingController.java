@@ -184,31 +184,31 @@ public class InformationProcessingController {
     // new
 
     // ArtistToAlbum
-    @PostMapping("/artists/{artistId}/albums/{albumId}")
+    @GetMapping("/artists/{artistId}/albums/{albumId}")
     public Boolean assignArtistToAlbum(@PathVariable int artistId, @PathVariable int albumId)  throws Exception{
         return informationProcessingService.assignArtistToAlbum(artistId, albumId);
     }
 
     // SongToAlbum
-    @PutMapping("/songs/{songId}/albums/{albumId}")
+    @GetMapping("/songs/{songId}/albums/{albumId}")
     public Boolean assignSongToAlbum(@PathVariable int songId, @PathVariable int albumId) throws Exception {
         return informationProcessingService.assignSongToAlbum(songId, albumId);
     }
 
     // ArtistToRecordLabel
-    @PutMapping("/artists/{artistId}/recordLabels/{recordLabelId}")
+    @GetMapping("/artists/{artistId}/recordLabels/{recordLabelId}")
     public Boolean assignArtistToRecordLabel(@PathVariable int artistId, @PathVariable int recordLabelId)  throws Exception{
         return informationProcessingService.assignArtistToRecordLabel(artistId, recordLabelId);
     }
 
     // EpisodeToPodcast
-    @PutMapping("/episodes/{episodeId}/podcasts/{podcastId}")
+    @GetMapping("/episodes/{episodeId}/podcasts/{podcastId}")
     public Boolean assignEpisodeToPodcast(@PathVariable int episodeId, @PathVariable int podcastId) throws Exception {
         return informationProcessingService.assignEpisodeToPodcast(episodeId, podcastId);
     }
 
     // PodcastHostToPodcast
-    @PostMapping("/podcasts/{podcastId}/hosts/{hostId}")
+    @GetMapping("/podcasts/{podcastId}/hosts/{hostId}")
     public Boolean assignPodcastHostToPodcast(@PathVariable int podcastId, @PathVariable int hostId) throws Exception {
         return informationProcessingService.assignPodcastHostToPodcast(podcastId, hostId);
     }

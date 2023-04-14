@@ -109,7 +109,7 @@ public class MetadataService {
      * @return true if the query is executed successfully
      * @throws Exception if the query fails
      */
-    public Boolean updatePodcastRatings(Integer podcastId, Integer rating) throws Exception {
+    public Boolean updatePodcastRatings(Integer podcastId, Double rating) throws Exception {
 
         String query = "UPDATE podcasts SET rating = " + rating + " WHERE podcastId = " + podcastId;
         return genericDAO.executeUpdate(query);

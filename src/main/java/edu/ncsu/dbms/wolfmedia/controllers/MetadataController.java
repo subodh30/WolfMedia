@@ -65,7 +65,7 @@ public class MetadataController {
     }
 
     @GetMapping("/updatePodcastRatings")
-    public Boolean updatePodcastRatings(@RequestParam Integer podcastId, @RequestParam Integer rating)
+    public Boolean updatePodcastRatings(@RequestParam Integer podcastId, @RequestParam Double rating)
             throws Exception {
         return metadataService.updatePodcastRatings(podcastId, rating);
     }

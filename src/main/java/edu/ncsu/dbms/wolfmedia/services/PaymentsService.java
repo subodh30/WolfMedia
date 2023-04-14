@@ -132,35 +132,28 @@ public class PaymentsService {
         try {
             connection.setAutoCommit(false);
             Statement statement = connection.createStatement();
-            ResultSet bonusResultSet = statement.executeQuery("SELECT createdBy.hostId, SUM(episodes.AdvertisementCount * 10) as bonus\n" +
+            ResultSet bonusResultSet = statement.executeQuery("SELECT createdBy.hostId, SUM(episodes.AdvertisementCount * 10) as bonus " +
                     " FROM podcasts JOIN createdBy ON podcasts.podcastId = createdBy.podcastId " +
                     " JOIN episodes ON episodes.podcastId = podcasts.podcastId " +
-                    " WHERE MONTH(episodes.releaseDate) = "+month+" AND YEAR(episodes.releaseDate) = "+year+
+                    " WHERE MONTH(episodes.releaseDate) = "+month+
                     " GROUP BY createdBy.hostId;");
             Map<Integer, Double> hostPayments = new HashMap<>();
             while(bonusResultSet.next()) {
                 hostPayments.put(bonusResultSet.getInt(1), Double.parseDouble(new DecimalFormat("#.##").format(bonusResultSet.getDouble(2))));
             }
-            ResultSet flatFeeResultSet = statement.executeQuery("SELECT\n" +
-                    "createdBy.hostId, podcasts.flatFee * COUNT(episodes.number) AS FlatFee\n" +
-                    "FROM\n" +
-                    "createdBy\n" +
-                    "JOIN podcasts ON createdBy.podcastId = podcasts.podcastId\n" +
-                    "JOIN episodes ON podcasts.podcastId = episodes.podcastId\n" +
-                    "WHERE MONTH(episodes.releaseDate) = "+month+
-                    "GROUP BY createdBy.hostId;");
+            ResultSet flatFeeResultSet = statement.executeQuery("SELECT createdBy.hostId, podcasts.flatFee * COUNT(episodes.number) AS FlatFee  FROM createdBy  JOIN podcasts ON createdBy.podcastId = podcasts.podcastId   JOIN episodes ON podcasts.podcastId = episodes.podcastId WHERE MONTH(episodes.releaseDate) = "+month+ " GROUP BY createdBy.hostId, podcasts.flatFee;");
             while(flatFeeResultSet.next()) {
                 int hostId = flatFeeResultSet.getInt(1);
                 double payment = hostPayments.get(hostId) + Double.parseDouble(new DecimalFormat("#.##").format(flatFeeResultSet.getDouble(2)));
                 hostPayments.put(hostId, payment);
             }
             for (Map.Entry<Integer, Double> entry : hostPayments.entrySet()) {
-                ResultSet insertIntoServiceAccount = statement.executeQuery("INSERT INTO serviceAccount (date, amount, type)\n" +
+                ResultSet insertIntoServiceAccount = statement.executeQuery("INSERT INTO serviceAccount (date, amount, type) " +
                         "VALUES (curdate(), "+entry.getValue()+", 'Debit');");
                 ResultSet lastInsertIdResultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 lastInsertIdResultSet.next();
                 int transactionId = lastInsertIdResultSet.getInt(1);
-                ResultSet insertIntoGivesPaymentTo = statement.executeQuery("INSERT INTO givesPaymentTo (transactionId, hostId)\n" +
+                ResultSet insertIntoGivesPaymentTo = statement.executeQuery("INSERT INTO givesPaymentTo (transactionId, hostId) " +
                         "VALUES ("+transactionId+", "+entry.getKey()+");");
                 connection.commit();
             }

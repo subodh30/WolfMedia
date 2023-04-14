@@ -37,18 +37,18 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/songs")
-    public void addSong(@RequestBody Songs song) throws Exception {
-        informationProcessingService.addSong(song);
+    public Boolean addSong(@RequestBody Songs song) throws Exception {
+        return informationProcessingService.addSong(song);
     }
 
     @PutMapping("/songs")
-    public void updateSong(@RequestBody Songs song) throws Exception {
-        informationProcessingService.updateSong(song);
+    public Boolean updateSong(@RequestBody Songs song) throws Exception {
+        return informationProcessingService.updateSong(song);
     }
 
     @DeleteMapping("/songs/{id}")
-    public void deleteSong(@PathVariable int id) throws Exception {
-        informationProcessingService.deleteSong(id);
+    public Boolean deleteSong(@PathVariable int id) throws Exception {
+        return informationProcessingService.deleteSong(id);
     }
 
     // Albums
@@ -63,18 +63,18 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/albums")
-    public void addAlbum(@RequestBody Albums album)  throws Exception{
-        informationProcessingService.addAlbum(album);
+    public Boolean addAlbum(@RequestBody Albums album)  throws Exception{
+        return informationProcessingService.addAlbum(album);
     }
 
     @PutMapping("/albums")
-    public void updateAlbum(@RequestBody Albums album) throws Exception {
-        informationProcessingService.updateAlbum(album);
+    public Boolean updateAlbum(@RequestBody Albums album) throws Exception {
+        return informationProcessingService.updateAlbum(album);
     }
 
     @DeleteMapping("/albums/{id}")
-    public void deleteAlbum(@PathVariable int id) throws Exception {
-        informationProcessingService.deleteAlbum(id);
+    public Boolean deleteAlbum(@PathVariable int id) throws Exception {
+        return informationProcessingService.deleteAlbum(id);
     }
 
     // Artists
@@ -89,18 +89,18 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/artists")
-    public void addArtist(@RequestBody Artists artist)  throws Exception{
-        informationProcessingService.addArtist(artist);
+    public Boolean addArtist(@RequestBody Artists artist)  throws Exception{
+        return informationProcessingService.addArtist(artist);
     }
 
     @PutMapping("/artists")
-    public void updateArtist(@RequestBody Artists artist)  throws Exception{
-        informationProcessingService.updateArtist(artist);
+    public Boolean updateArtist(@RequestBody Artists artist)  throws Exception{
+        return informationProcessingService.updateArtist(artist);
     }
 
     @DeleteMapping("/artists/{id}")
-    public void deleteArtist(@PathVariable int id) throws Exception {
-        informationProcessingService.deleteArtist(id);
+    public Boolean deleteArtist(@PathVariable int id) throws Exception {
+        return informationProcessingService.deleteArtist(id);
     }
 
     // PodcastHost
@@ -115,18 +115,18 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/podcastHosts")
-    public void addPodcastHost(@RequestBody PodcastHosts podcastHost) throws Exception {
-        informationProcessingService.addPodcastHost(podcastHost);
+    public Boolean addPodcastHost(@RequestBody PodcastHosts podcastHost) throws Exception {
+        return informationProcessingService.addPodcastHost(podcastHost);
     }
 
     @PutMapping("/podcastHosts")
-    public void updatePodcastHost(@RequestBody PodcastHosts podcastHost) throws Exception {
-        informationProcessingService.updatePodcastHost(podcastHost);
+    public Boolean updatePodcastHost(@RequestBody PodcastHosts podcastHost) throws Exception {
+        return informationProcessingService.updatePodcastHost(podcastHost);
     }
 
     @DeleteMapping("/podcastHosts/{id}")
-    public void deletePodcastHost(@PathVariable int id)  throws Exception{
-        informationProcessingService.deletePodcastHost(id);
+    public Boolean deletePodcastHost(@PathVariable int id)  throws Exception{
+        return informationProcessingService.deletePodcastHost(id);
     }
 
     // Podcast
@@ -141,18 +141,18 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/podcasts")
-    public void addPodcast(@RequestBody Podcasts podcast) throws Exception {
-        informationProcessingService.addPodcast(podcast);
+    public Boolean addPodcast(@RequestBody Podcasts podcast) throws Exception {
+        return informationProcessingService.addPodcast(podcast);
     }
 
     @PutMapping("/podcasts")
-    public void updatePodcast(@RequestBody Podcasts podcast) throws Exception {
-        informationProcessingService.updatePodcast(podcast);
+    public Boolean updatePodcast(@RequestBody Podcasts podcast) throws Exception {
+        return informationProcessingService.updatePodcast(podcast);
     }
 
     @DeleteMapping("/podcasts/{id}")
-    public void deletePodcast(@PathVariable int id)  throws Exception{
-        informationProcessingService.deletePodcast(id);
+    public Boolean deletePodcast(@PathVariable int id)  throws Exception{
+        return informationProcessingService.deletePodcast(id);
     }
 
     // PodcastEpisode
@@ -167,50 +167,50 @@ public class InformationProcessingController {
     }
 
     @PostMapping("/podcastEpisodes")
-    public void addPodcastEpisode(@RequestBody Episodes podcastEpisode) throws Exception {
-        informationProcessingService.addPodcastEpisode(podcastEpisode);
+    public Boolean addPodcastEpisode(@RequestBody Episodes podcastEpisode) throws Exception {
+        return informationProcessingService.addPodcastEpisode(podcastEpisode);
     }
 
     @PutMapping("/podcastEpisodes")
-    public void updatePodcastEpisode(@RequestBody Episodes podcastEpisode) throws Exception {
-        informationProcessingService.updatePodcastEpisode(podcastEpisode);
+    public Boolean updatePodcastEpisode(@RequestBody Episodes podcastEpisode) throws Exception {
+        return informationProcessingService.updatePodcastEpisode(podcastEpisode);
     }
 
     @DeleteMapping("/podcastEpisodes/{podcastId}/{number}")
-    public void deletePodcastEpisode(@PathVariable int podcastId, @PathVariable int number)  throws Exception{
-        informationProcessingService.deletePodcastEpisode(podcastId, number);
+    public Boolean deletePodcastEpisode(@PathVariable int podcastId, @PathVariable int number)  throws Exception{
+        return informationProcessingService.deletePodcastEpisode(podcastId, number);
     }
 
     // new
 
     // ArtistToAlbum
     @PostMapping("/artists/{artistId}/albums/{albumId}")
-    public void assignArtistToAlbum(@PathVariable int artistId, @PathVariable int albumId)  throws Exception{
-        informationProcessingService.assignArtistToAlbum(artistId, albumId);
+    public Boolean assignArtistToAlbum(@PathVariable int artistId, @PathVariable int albumId)  throws Exception{
+        return informationProcessingService.assignArtistToAlbum(artistId, albumId);
     }
 
     // SongToAlbum
     @PutMapping("/songs/{songId}/albums/{albumId}")
-    public void assignSongToAlbum(@PathVariable int songId, @PathVariable int albumId) throws Exception {
-        informationProcessingService.assignSongToAlbum(songId, albumId);
+    public Boolean assignSongToAlbum(@PathVariable int songId, @PathVariable int albumId) throws Exception {
+        return informationProcessingService.assignSongToAlbum(songId, albumId);
     }
 
     // ArtistToRecordLabel
     @PutMapping("/artists/{artistId}/recordLabels/{recordLabelId}")
-    public void assignArtistToRecordLabel(@PathVariable int artistId, @PathVariable int recordLabelId)  throws Exception{
-        informationProcessingService.assignArtistToRecordLabel(artistId, recordLabelId);
+    public Boolean assignArtistToRecordLabel(@PathVariable int artistId, @PathVariable int recordLabelId)  throws Exception{
+        return informationProcessingService.assignArtistToRecordLabel(artistId, recordLabelId);
     }
 
     // EpisodeToPodcast
     @PutMapping("/episodes/{episodeId}/podcasts/{podcastId}")
-    public void assignEpisodeToPodcast(@PathVariable int episodeId, @PathVariable int podcastId) throws Exception {
-        informationProcessingService.assignEpisodeToPodcast(episodeId, podcastId);
+    public Boolean assignEpisodeToPodcast(@PathVariable int episodeId, @PathVariable int podcastId) throws Exception {
+        return informationProcessingService.assignEpisodeToPodcast(episodeId, podcastId);
     }
 
     // PodcastHostToPodcast
     @PostMapping("/podcasts/{podcastId}/hosts/{hostId}")
-    public void assignPodcastHostToPodcast(@PathVariable int podcastId, @PathVariable int hostId) throws Exception {
-        informationProcessingService.assignPodcastHostToPodcast(podcastId, hostId);
+    public Boolean assignPodcastHostToPodcast(@PathVariable int podcastId, @PathVariable int hostId) throws Exception {
+        return informationProcessingService.assignPodcastHostToPodcast(podcastId, hostId);
     }
 
 }

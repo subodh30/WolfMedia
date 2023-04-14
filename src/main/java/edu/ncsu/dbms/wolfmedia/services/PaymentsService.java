@@ -22,7 +22,13 @@ public class PaymentsService {
         this.genericDAO = genericDAO;
     }
 
-    //make royalty payment of a song for a given month
+    /**
+     * Makes a royalty payment to the record label and the artists associated with the song
+     * @param songId song for which the royalty payment is to be made
+     * @param month month for which the royalty payment is to be made
+     * @param year year for which the royalty payment is to be made
+     * @return String containing the status of the payment
+     */
     public String makeRoyaltyPayment(int songId, int month, int year) {
         Connection connection = genericDAO.createConnection();
         try {
@@ -86,7 +92,11 @@ public class PaymentsService {
         }
     }
 
-    //view the song royalties generated in the given month
+    /**
+     * Generates the royalty for the given month
+     * @param month month for which the royalty is to be generated
+     * @return List of maps containing the songId and the royalty generated for the song
+     */
     public List<Map<String, Object>> generateMonthlyRoyalty(int month) {
         List<Map<String, Object>> result = new ArrayList<>();
         try {
@@ -108,7 +118,11 @@ public class PaymentsService {
         return result;
     }
 
-    // make payment to podcast hosts for every podcast episode released in the given month
+    /**
+     * Makes a payment to the podcast host for the given month
+     * @param month month for which the payment is to be made
+     * @return String containing the status of the payment
+     */
     public String  makePaymentToPodcastHost(int month) {
         Connection connection = genericDAO.createConnection();
         try {
@@ -161,7 +175,10 @@ public class PaymentsService {
         }
     }
 
-    //Receive payment from users with active status of subscription
+    /**
+     * receives payment from the subscribers for the given month
+     * @return String containing the status of the payment
+     */
     public String receivePaymentFromSubscribers() {
         Connection connection = genericDAO.createConnection();
         try {

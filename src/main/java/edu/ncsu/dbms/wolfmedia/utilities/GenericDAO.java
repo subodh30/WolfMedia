@@ -16,6 +16,10 @@ public class GenericDAO {
     private final String username = "khrawool";
     private final String password = "kartik_password";
 
+    /**
+     * Creates a connection to the database
+     * @return Connection object
+     */
     public Connection createConnection() {
         Connection connection = null;
             try {
@@ -29,6 +33,12 @@ public class GenericDAO {
     public GenericDAO() {
     }
 
+    /**
+     * Executes a query and returns the result set
+     * @param query  query to be executed
+     * @return ResultSet object containing the result of the query
+     * @throws Exception if query fails
+     */
     public ResultSet executeQuery(String query) throws Exception {
         Connection connection = createConnection();
         ResultSet resultSet = null;
@@ -45,6 +55,12 @@ public class GenericDAO {
         return resultSet;
     }
 
+    /**
+     * Executes an update query
+     * @param query query to be executed
+     * @return Boolean if query is successful
+     * @throws Exception if query fails
+     */
     public boolean executeUpdate(String query) throws Exception {
         Connection connection = createConnection();
         boolean result = false;
@@ -61,6 +77,10 @@ public class GenericDAO {
         return result;
     }
 
+    /**
+     * Closes the connection to the database
+     * @param connection Connection object
+     */
     private void closeConnection(Connection connection) {
         try {
             System.out.println("Closing connection");

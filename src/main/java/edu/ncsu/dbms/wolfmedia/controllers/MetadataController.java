@@ -20,7 +20,7 @@ public class MetadataController {
     }
 
     @GetMapping("/addPlayCountSong")
-    public Boolean addPlayCountSong(@RequestParam Integer songId, @RequestParam Integer playCount) throws Exception {
+    public Boolean p(@RequestParam Integer songId, @RequestParam Integer playCount) throws Exception {
         return metadataService.addPlayCountSong(songId, playCount);
     }
 
@@ -37,7 +37,7 @@ public class MetadataController {
     }
 
     @GetMapping("/addPodcastRatings")
-    public Boolean addPodcastRatings(@RequestParam Integer podcastId, @RequestParam Integer rating) throws Exception {
+    public Boolean addPodcastRatings(@RequestParam Integer podcastId, @RequestParam Double rating) throws Exception {
         return metadataService.addPodcastRatings(podcastId, rating);
     }
 
